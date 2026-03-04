@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Руководства
+{% endblock %}
+
+{% block content %}
+    <div class="guides-page">
+        <h1 class="page-title">
+            <i class="fas fa-scroll"></i>
+            Руководства сталкеров
+        </h1>
+
+        <div class="guides-grid">
+            {% for guide in guides %}
+            <div class="guide-card" onclick="window.location='#';">
+                <div class="guide-icon">
+                    <i class="fas fa-scroll"></i>
+                </div>
+                <h3 class="guide-title">{{ guide.name }}</h3>
+                <p class="guide-description">{{ guide.description|truncatechars:100 }}</p>
+
+                <div class="guide-tags">
+                    {% for tag in guide.tags.all %}
+                    <span class="guide-tag">
+                        <i class="fas fa-hashtag"></i> {{ tag.name }}
+                    </span>
+                    {% endfor %}
+                </div>
+
+                <div class="guide-footer">
+                    <span class="guide-author">
+                        <i class="fas fa-user"></i> {{ guide.user.username }}
+                    </span>
+                </div>
+            </div>
+            {% empty %}
+            <div class="no-guides">
+                <i class="fas fa-skull"></i>
+                <p>Пока нет руководств...</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

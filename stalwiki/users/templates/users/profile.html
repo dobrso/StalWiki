@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Профиль сталкера
+{% endblock %}
+
+{% block content %}
+    <div class="profile-container">
+        <h1 class="page-title">
+            <i class="fas fa-id-card"></i>
+            Профиль {{ user.username }}
+        </h1>
+
+        <div class="profile-card">
+            <div class="profile-info">
+                <div class="bio-section">
+                    <h3><i class="fas fa-scroll"></i> Описание профиля</h3>
+                    {% if profile.description %}
+                        <p class="bio-text">{{ profile.description }}</p>
+                    {% else %}
+                        <p class="bio-text empty">{{ user.username }} еще не добавил описание...</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

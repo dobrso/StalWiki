@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Главная
+{% endblock %}
+
+{% block content %}
+    <h1 class="page-title">Добро пожаловать во вселенную Stalcraft:X</h1>
+
+    <div class="tools-grid">
+        <div class="tool-card" onclick="window.location='#';">
+            <div class="tool-icon"><i class="fas fa-gun"></i></div>
+            <h3>Предметы</h3>
+            <p>В разработке</p>
+        </div>
+
+        <button class="tool-card" onclick="window.location='{% url 'guides:guide_list' %}';">
+            <div class="tool-icon"><i class="fas fa-book-open"></i></div>
+            <h3>Руководства</h3>
+            <p>Полезные статьи от лучших обитателей зоны</p>
+        </button>
+
+        <div class="tool-card">
+            <div class="tool-icon"><i class="fas fa-users"></i></div>
+            <h3>Подразделения</h3>
+            <p>В разработке</p>
+        </div>
+    </div>
+{% endblock %}
