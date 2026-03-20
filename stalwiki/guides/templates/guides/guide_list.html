@@ -6,14 +6,25 @@
 
 {% block content %}
     <div class="guides-page">
-        <h1 class="page-title">
-            <i class="fas fa-scroll"></i>
-            Руководства сталкеров
-        </h1>
+        {# --- ИСПРАВЛЕНО: Заголовок сверху, кнопка под ним --- #}
+        <div class="page-header">
+            <h1 class="page-title">
+                <i class="fas fa-scroll"></i>
+                Руководства сталкеров
+            </h1>
+
+            {# Кнопка создания руководства - теперь под заголовком #}
+            <div class="button-container">
+                <a href="{% url 'guides:guide_create' %}" class="btn-create-guide">
+                    <i class="fas fa-plus"></i>
+                    Создать руководство
+                </a>
+            </div>
+        </div>
 
         <div class="guides-grid">
             {% for guide in guides %}
-            <div class="guide-card" onclick="window.location='#';">
+            <div class="guide-card" onclick="window.location='{% url 'guides:guide_detail' guide.id %}';">
                 <div class="guide-icon">
                     <i class="fas fa-scroll"></i>
                 </div>
