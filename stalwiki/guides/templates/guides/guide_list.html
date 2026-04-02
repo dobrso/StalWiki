@@ -6,20 +6,20 @@
 
 {% block content %}
     <div class="guides-page">
-        {# --- ИСПРАВЛЕНО: Заголовок сверху, кнопка под ним --- #}
         <div class="page-header">
             <h1 class="page-title">
                 <i class="fas fa-scroll"></i>
                 Руководства сталкеров
             </h1>
 
-            {# Кнопка создания руководства - теперь под заголовком #}
-            <div class="button-container">
-                <a href="{% url 'guides:guide_create' %}" class="btn-create-guide">
-                    <i class="fas fa-plus"></i>
-                    Создать руководство
-                </a>
-            </div>
+            {% if user.is_authenticated %}
+                <div class="button-container">
+                    <a href="{% url 'guides:guide_create' %}" class="btn-create-guide">
+                        <i class="fas fa-plus"></i>
+                        Создать руководство
+                    </a>
+                </div>
+            {% endif %}
         </div>
 
         <div class="guides-grid">

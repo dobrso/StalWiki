@@ -14,14 +14,32 @@
     <body>
         <div class="container">
             <header class="header">
-                <div class="logo">
-                    <i class="fas fa-skull logo-icon"></i>
-                    <span class="logo-text">STALCRAFT: X</span>
-                </div>
-                <div class="auth-buttons">
-                    <a href="#" class="btn btn-login">Вход</a>
-                    <a href="#" class="btn btn-register">Регистрация</a>
-                </div>
+                <a href="{% url 'main:home_page' %}" class="logo-link">
+                    <div class="logo">
+                        <i class="fas fa-skull logo-icon"></i>
+                        <span class="logo-text">STALCRAFT: X</span>
+                    </div>
+                </a>
+                {% if user.is_authenticated %}
+                    <div class="user-menu">
+                        <a href="{% url 'users:profile' %}" class="btn-profile">
+                            <i class="fas fa-user-circle"></i>
+                            <span>{{ user.username }}</span>
+                        </a>
+                        <form action="{% url 'users:logout' %}" method="post" class="logout-form">
+                            {% csrf_token %}
+                            <button type="submit" class="btn-logout">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>Выйти</span>
+                            </button>
+                        </form>
+                    </div>
+                {% else %}
+                    <div class="auth-buttons">
+                        <a href="{% url 'users:login' %}" class="btn btn-login">Вход</a>
+                        <a href="{% url 'users:register' %}" class="btn btn-register">Регистрация</a>
+                    </div>
+                {% endif %}
             </header>
 
             <main class="main">
